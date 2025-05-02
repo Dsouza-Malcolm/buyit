@@ -3,18 +3,18 @@ import { ShoppingCart } from "lucide-react";
 import React from "react";
 import { Button } from "../ui/button";
 import { Plus } from "lucide-react";
+import { toast } from "sonner";
 
 const AddToCart = ({ product }) => {
   const { addToCart, cartItems } = useCartStore();
 
   const handleAddToCard = (e) => {
     e.stopPropagation();
+    toast.info("Product Added to Cart");
     addToCart(product);
   };
 
   const isInCart = cartItems.some((item) => item.id === product.id);
-
-  console.log(isInCart);
 
   return (
     <Button
