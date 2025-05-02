@@ -10,7 +10,7 @@ const AddToCart = ({ product }) => {
 
   const handleAddToCard = (e) => {
     e.stopPropagation();
-    toast.info("Product Added to Cart");
+    toast.info("Product added to Cart");
     addToCart(product);
   };
 

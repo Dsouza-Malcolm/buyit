@@ -25,7 +25,7 @@ const SearchBar = () => {
   }, [localQuery, setSearchQuery, setSearchParams]);
 
   return (
-    <div className="flex flex-col gap-3 px-2 py-4 max-w-sm flex-1 mx-auto">
+    <div className="flex flex-col gap-2 px-2 py-4 max-w-sm flex-1 mx-auto">
       <Label className="text-sm text-zinc-700 font-medium">Search</Label>
 
       <div className="relative">
@@ -34,12 +34,12 @@ const SearchBar = () => {
         </div>
         <div>
           <div className="flex items-center gap-4">
-            <Input
+            <input
               type="text"
               placeholder="Search products"
               value={localQuery}
               onChange={(e) => setLocalQuery(e.target.value)}
-              className="pl-10 rounded-md border border-zinc-400 focus:outline-none focus-visible:ring-0 focus-visible:border-blue-600 focus:border-blue-600 focus:ring-2 focus:ring-blue-600 transition-all:"
+              className="pl-10 rounded-lg border border-zinc-300 focus:outline-none focus-visible:ring-0 focus-visible:border-blue-600 focus:border-blue-600 focus:ring-2 focus:ring-blue-600 transition-all bg-white py-2 max-w-sm w-full font-outfit"
             />
 
             <div className="md:hidden px-4 flex justify-end">

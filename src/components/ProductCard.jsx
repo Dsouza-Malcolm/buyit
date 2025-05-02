@@ -19,7 +19,7 @@ const ProductCard = React.memo(({ product }) => {
   return (
     <motion.div
       whileTap={{ scale: 0.8 }}
-      className="relative w-full max-w-sm mx-auto shadow-md hover:shadow-xl transition duration-300 rounded-xl overflow-hidden p-0 gap-0"
+      className="relative w-full h-full max-w-sm mx-auto shadow-md hover:shadow-xl transition duration-300 rounded-xl overflow-hidden p-0 gap-0 bg-white flex flex-col justify-between"
       onClick={handleProductClick}
     >
       <AddToCart product={product} />
@@ -47,9 +47,11 @@ const ProductCard = React.memo(({ product }) => {
         </div>
       </CardHeader>
 
-      <CardContent className="py-4 px-4 flex flex-col justify-between h-full">
-        <p className="text-xs mb-1 text-zinc-500">Price</p>
-        <p className="text-zinc-600 font-outfit">$ {product.price}</p>
+      <CardContent className="py-4 px-4 flex flex-col justify-end">
+        <p className="text-xs mb-1 text-zinc-800">Price</p>
+        <p className="text-zinc-600 font-medium text-xl font-outfit">
+          $ {product.price}
+        </p>
       </CardContent>
     </motion.div>
   );
