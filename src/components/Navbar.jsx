@@ -115,7 +115,12 @@ const Navbar = () => {
             </Button>
           </>
         ) : (
-          <Button onClick={() => navigate("/login")}>Login</Button>
+          <Button
+            className="bg-blue-600 hover:bg-blue-700 cursor-pointer"
+            onClick={() => navigate("/login")}
+          >
+            Login
+          </Button>
         )}
       </div>
 
@@ -153,7 +158,7 @@ const Navbar = () => {
               <Link
                 to="/products"
                 className={cn(
-                  "text-sm hover:text-blue-600",
+                  "text-lg hover:text-blue-600 ",
                   currentPath === "/products"
                     ? "text-blue-600 font-semibold"
                     : ""
@@ -188,7 +193,10 @@ const Navbar = () => {
                   </Button>
                 </>
               ) : (
-                <Button onClick={() => navigate("/login")} className="w-full">
+                <Button
+                  onClick={() => navigate("/login")}
+                  className="w-full bg-blue-600"
+                >
                   Login
                 </Button>
               )}
