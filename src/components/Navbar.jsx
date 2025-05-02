@@ -3,17 +3,31 @@ import useCartStore from "@/services/store/useCartStore";
 import updateSearchParams from "@/utils/updateSearchParams";
 import { ShoppingCart } from "lucide-react";
 import { AnimatePresence, motion } from "motion/react";
-import { Link, useNavigate, useSearchParams } from "react-router-dom";
+import {
+  Link,
+  useLocation,
+  useNavigate,
+  useSearchParams,
+} from "react-router-dom";
 import { Button } from "./ui/button";
-import { Sheet, SheetContent, SheetTrigger } from "./ui/sheet";
+import {
+  Sheet,
+  SheetContent,
+  SheetDescription,
+  SheetFooter,
+  SheetHeader,
+  SheetTitle,
+  SheetTrigger,
+} from "./ui/sheet";
 import { Menu } from "lucide-react";
+import { cn } from "@/lib/utils";
 
 const Navbar = () => {
   const { user, logout } = useAuthStore();
   const navigate = useNavigate();
   const { cartItems } = useCartStore((state) => state);
   const itemCount = cartItems.length;
-  const [_, setSearchParams] = useSearchParams();
+  const [searchParams, setSearchParams] = useSearchParams();
 
   const handleLogout = () => {
     logout();
@@ -23,6 +37,10 @@ const Navbar = () => {
   const handleOpenCart = () => {
     setSearchParams(updateSearchParams({ cart: "open" }));
   };
+
+  const location = useLocation();
+  const currentPath = location.pathname;
+  const isCartOpen = searchParams.get("cart") === "open";
 
   return (
     <nav className="w-full px-4 py-3 shadow-sm bg-background flex justify-between items-center sticky top-0 z-50 border-b">
@@ -34,22 +52,36 @@ const Navbar = () => {
       </Link>
 
       <div className="items-center space-x-10 hidden md:flex">
-        <Link to="/products" className="text-sm hover:text-blue-600">
+        <Link
+          to="/products"
+          className={cn(
+            "text-sm hover:text-blue-600",
+            currentPath === "/products" ? "text-blue-600 font-semibold" : ""
+          )}
+        >
           Products
         </Link>
 
         {user && (
-          <Link className="text-sm hover:text-blue-600" to="my-orders">
+          <Link
+            className={cn(
+              "text-sm hover:text-blue-600",
+              currentPath === "/my-orders" ? "text-blue-600 font-semibold" : ""
+            )}
+            to="my-orders"
+          >
             My Orders
           </Link>
         )}
 
         <div
           onClick={handleOpenCart}
-          className="text-sm hover:text-blue-600 cursor-pointer"
+          className={cn(
+            "text-sm hover:text-blue-600 cursor-pointer",
+            isCartOpen ? "text-blue-600 font-semibold" : ""
+          )}
         >
           <div className="relative flex items-center gap-1">
-            {/* Cart Icon with badge */}
             <div className="relative">
               <ShoppingCart className="size-6 stroke-zinc-700" />
               <AnimatePresence>
@@ -74,7 +106,11 @@ const Navbar = () => {
             <span className="text-sm text-gray-600">
               Hi, {user.email.slice(0, 4)}
             </span>
-            <Button onClick={handleLogout} variant="outline">
+            <Button
+              className="cursor-pointer"
+              onClick={handleLogout}
+              variant="outline"
+            >
               Logout
             </Button>
           </>
@@ -98,24 +134,49 @@ const Navbar = () => {
             <Menu className="size-6 stroke-zinc-700" />
           </SheetTrigger>
           <SheetContent side="right" className="w-[85%] p-6">
-            <nav className="flex flex-col gap-6 pt-10">
-              {user && (
-                <span className="text-gray-600 ">
-                  Hi,{" "}
-                  <span className="font-play-fair text-xl">
-                    {user.email.slice(0, 4)}
-                  </span>
-                </span>
-              )}
-              <Link to="/products" className="text-lg hover:text-blue-600">
+            <nav className="flex flex-col gap-6 pt-6">
+              <SheetHeader>
+                <SheetTitle>
+                  {user && (
+                    <span className="text-gray-600 ">
+                      Hi,{" "}
+                      <span className="font-play-fair text-xl">
+                        {user.email.slice(0, 4)}
+                      </span>
+                    </span>
+                  )}
+                </SheetTitle>
+
+                <SheetDescription className="sr-only"></SheetDescription>
+              </SheetHeader>
+
+              <Link
+                to="/products"
+                className={cn(
+                  "text-sm hover:text-blue-600",
+                  currentPath === "/products"
+                    ? "text-blue-600 font-semibold"
+                    : ""
+                )}
+              >
                 Products
               </Link>
               {user && (
-                <Link className="text-lg hover:text-blue-600" to="my-orders">
+                <Link
+                  className={cn(
+                    "text-sm hover:text-blue-600",
+                    currentPath === "/my-orders"
+                      ? "text-blue-600 font-semibold"
+                      : ""
+                  )}
+                  to="my-orders"
+                >
                   My Orders
                 </Link>
               )}
+            </nav>
 
+            <SheetFooter>
               {user ? (
                 <>
                   <Button
@@ -131,7 +192,7 @@ const Navbar = () => {
                   Login
                 </Button>
               )}
-            </nav>
+            </SheetFooter>
           </SheetContent>
         </Sheet>
       </div>

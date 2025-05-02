@@ -6,7 +6,6 @@ import { Mail } from "lucide-react";
 import { Landmark } from "lucide-react";
 import { ScrollText } from "lucide-react";
 import { Users } from "lucide-react";
-import { Store } from "lucide-react";
 import React from "react";
 
 const Footer = () => {
@@ -15,8 +14,6 @@ const Footer = () => {
       <div
         className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-6"
         initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, amount: 0.1 }}
       >
         <div>
           <h4 className="text-white font-semibold mb-2 flex items-center gap-1 font-play-fair text-3xl">
