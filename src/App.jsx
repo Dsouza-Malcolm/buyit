@@ -14,6 +14,7 @@ import { useEffect } from "react";
 import { Spinner } from "./components/LoadingScreen";
 import ProductCartSheet from "./components/ProductCartSheet";
 import { Toaster } from "./components/ui/sonner";
+import NotFound from "./components/NotFound";
 
 function App() {
   const listenToAuth = useAuthStore((state) => state.listenToAuth);
@@ -51,6 +52,8 @@ function App() {
           <Route path="/products" Component={ProductsPage} />
           <Route path="/cart" Component={ProductsPage} />
         </Route>
+
+        <Route path="*" element={<NotFound />} />
       </Routes>
 
       <ProductCartSheet />
