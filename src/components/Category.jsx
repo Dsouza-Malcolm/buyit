@@ -29,7 +29,6 @@ const CategorySidebar = () => {
       search: searchQuery?.trim() || null,
     });
 
-    console.log(updatedParams);
     setSearchParams(updatedParams);
   };
 

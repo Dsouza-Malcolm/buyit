@@ -28,7 +28,6 @@ const useAuthStore = create(
 
     listenToAuth: () => {
       onAuthStateChanged(auth, (user) => {
-        console.log(user);
         set({ user, loading: false });
       });
     },
