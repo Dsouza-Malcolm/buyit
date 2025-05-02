@@ -14,6 +14,7 @@ import {
   Tag,
   Truck,
 } from "lucide-react";
+import { Link } from "react-router-dom";
 import { motion } from "motion/react";
 
 const Home = () => {
@@ -107,10 +108,15 @@ const Home = () => {
             just for you.
           </motion.p>
 
-          <Button className="bg-blue-600 text-white hover:bg-blue-700 transition-all hover:scale-105 cursor-pointer">
-            <ShoppingCart className="mr-2 h-5 w-5" />
-            Start Shopping
-            <ChevronRight className="ml-1 h-4 w-4" />
+          <Button
+            asChild
+            className="bg-blue-600 text-white hover:bg-blue-700 transition-all hover:scale-105 cursor-pointer"
+          >
+            <Link to="/products">
+              <ShoppingCart className="mr-2 h-5 w-5" />
+              Start Shopping
+              <ChevronRight className="ml-1 h-4 w-4" />
+            </Link>
           </Button>
         </div>
       </motion.section>
