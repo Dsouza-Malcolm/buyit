@@ -53,6 +53,15 @@ const Navbar = () => {
 
       <div className="items-center space-x-10 hidden md:flex">
         <Link
+          to="/"
+          className={cn(
+            "text-sm hover:text-blue-600",
+            currentPath === "/" ? "text-blue-600 font-semibold" : ""
+          )}
+        >
+          Home
+        </Link>
+        <Link
           to="/products"
           className={cn(
             "text-sm hover:text-blue-600",
@@ -140,7 +149,7 @@ const Navbar = () => {
           </SheetTrigger>
           <SheetContent side="right" className="w-[85%] p-6">
             <nav className="flex flex-col gap-6 pt-6">
-              <SheetHeader>
+              <SheetHeader className="px-0">
                 <SheetTitle>
                   {user && (
                     <span className="text-gray-600 ">
@@ -156,6 +165,15 @@ const Navbar = () => {
               </SheetHeader>
 
               <Link
+                to="/"
+                className={cn(
+                  "text-lg hover:text-blue-600 ",
+                  currentPath === "/" ? "text-blue-600 font-semibold" : ""
+                )}
+              >
+                Home
+              </Link>
+              <Link
                 to="/products"
                 className={cn(
                   "text-lg hover:text-blue-600 ",
@@ -169,7 +187,7 @@ const Navbar = () => {
               {user && (
                 <Link
                   className={cn(
-                    "text-sm hover:text-blue-600",
+                    "text-lg hover:text-blue-600",
                     currentPath === "/my-orders"
                       ? "text-blue-600 font-semibold"
                       : ""

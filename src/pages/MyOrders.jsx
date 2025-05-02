@@ -65,9 +65,9 @@ const MyOrdersPage = () => {
 
   if (orders.length === 0) {
     return (
-      <div className=" h-dvh flex items-center justify-center">
+      <div className="h-dvh flex items-center justify-center">
         <motion.div
-          className="max-w-md sm:mx-auto p-8 mt-12 text-center bg-white rounded-2xl shadow-sm border border-zinc-100"
+          className="sm:max-w-md mx-4 sm:mx-auto p-8 text-center bg-white rounded-2xl shadow-sm border border-zinc-100"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
