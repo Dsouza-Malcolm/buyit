@@ -218,7 +218,6 @@ const Home = () => {
         </motion.div>
       </section>
 
-      {/* Testimonials Section */}
       <section className="py-20 px-6 bg-gradient-to-r from-blue-500 to-purple-500 relative z-10">
         <motion.h2
           className="text-2xl font-semibold text-white mb-2 text-center"
@@ -283,7 +282,6 @@ const Home = () => {
         </motion.div>
       </section>
 
-      {/* Shopping Benefits Section */}
       <section className="py-16 px-6 bg-zinc-100 bg-opacity-90 relative z-10">
         <motion.div
           className="max-w-6xl mx-auto"

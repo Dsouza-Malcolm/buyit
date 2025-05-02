@@ -1,16 +1,13 @@
-import useCartStore from "@/services/store/useCartStore";
 import useProductStore from "@/services/store/useProductsStore";
 import updateSearchParams from "@/utils/updateSearchParams";
 import { motion } from "framer-motion";
-import { Plus } from "lucide-react";
 import React from "react";
 import { useSearchParams } from "react-router-dom";
+import AddToCart from "./cart/AddToCart";
 import { Badge } from "./ui/badge";
-import { Button } from "./ui/button";
 import { CardContent, CardDescription, CardHeader, CardTitle } from "./ui/card";
 
 const ProductCard = React.memo(({ product }) => {
-  const addToCart = useCartStore((state) => state.addToCart);
   const openProduct = useProductStore((state) => state.openProduct);
   const [_, setSearchParams] = useSearchParams();
 
@@ -19,25 +16,13 @@ const ProductCard = React.memo(({ product }) => {
     setSearchParams(updateSearchParams({ product: product.id }));
   };
 
-  const handleAddToCard = (e) => {
-    e.stopPropagation();
-    addToCart(product);
-  };
-
   return (
     <motion.div
       whileTap={{ scale: 0.8 }}
       className="relative w-full max-w-sm mx-auto shadow-md hover:shadow-xl transition duration-300 rounded-xl overflow-hidden p-0 gap-0"
       onClick={handleProductClick}
     >
-      <Button
-        size="icon"
-        variant="ghost"
-        className="absolute top-3 right-3 z-10 bg-white/70 backdrop-blur-md hover:bg-white shadow-md"
-        onClick={handleAddToCard}
-      >
-        <Plus className="w-5 h-5 text-gray-800" />
-      </Button>
+      <AddToCart product={product} />
 
       <CardHeader className="p-0 relative">
         <img
