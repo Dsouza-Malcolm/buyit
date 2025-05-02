@@ -10,7 +10,7 @@ const searchFilterHandler = (query, displayData) => {
     query.search === "" || query.search === undefined
       ? filteredByCategory
       : filteredByCategory.filter((product) =>
-          product.title.toLowerCase().includes(query.search)
+          product.title.toLowerCase().includes(query.search.toLowerCase())
         );
 
   return filtered;
