@@ -52,7 +52,7 @@ const CheckoutPage = () => {
   };
 
   return (
-    <div className="max-w-md mx-auto p-6 space-y-6">
+    <div className="max-w-md mx-auto p-6 space-y-6 min-h-dvh my-10">
       <h2 className="text-2xl font-semibold text-zinc-800">Checkout</h2>
 
       <div className="space-y-4">

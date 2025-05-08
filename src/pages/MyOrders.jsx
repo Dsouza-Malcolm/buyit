@@ -98,7 +98,7 @@ const MyOrdersPage = () => {
   }
 
   return (
-    <div className="max-w-2xl sm:mx-auto px-4 py-8 mx-2">
+    <div className="max-w-2xl sm:mx-auto px-4 py-8 mx-2 min-h-dvh my-10">
       <AnimatePresence mode="wait">
         {!selectedOrder ? (
           <motion.div
