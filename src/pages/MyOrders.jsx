@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
 import useMyOrders from "@/services/store/useMyOrders";
+import { currencyFormatter } from "@/utils/formatter";
 import {
   Box,
   Calendar,
@@ -195,7 +196,7 @@ const MyOrdersPage = () => {
                           Total Amount:
                         </p>
                         <p className="text-lg font-semibold text-blue-600 font-outfit">
-                          ${parseFloat(order.totalAmount).toFixed(2)}
+                          {currencyFormatter(order.totalAmount)}
                         </p>
                       </div>
 
@@ -323,7 +324,7 @@ const MyOrdersPage = () => {
                         </div>
                       </div>
                       <div className="text-sm font-semibold text-blue-600 font-outfit">
-                        ${parseFloat(item.totalPrice).toFixed(2)}
+                        {currencyFormatter(item.price)}
                       </div>
                     </motion.div>
                   ))}
@@ -333,24 +334,23 @@ const MyOrdersPage = () => {
                   <div className="flex justify-between items-center text-sm text-zinc-600">
                     <span>Subtotal</span>
                     <span className="font-outfit">
-                      $
-                      {parseFloat(
+                      {currencyFormatter(
                         selectedOrder.totalAmount -
                           (selectedOrder.shipping || 0)
-                      ).toFixed(2)}
+                      )}
                     </span>
                   </div>
                   <div className="flex justify-between items-center text-sm text-zinc-600 mt-2">
                     <span>Shipping</span>
                     <span className="font-outfit">
-                      ${parseFloat(selectedOrder.shipping || 0).toFixed(2)}
+                      {currencyFormatter(selectedOrder.shipping || 0)}
                     </span>
                   </div>
                   <Separator className="my-3" />
                   <div className="flex justify-between items-center text-lg font-bold text-blue-700">
                     <span>Total</span>
                     <span className="font-outfit">
-                      ${parseFloat(selectedOrder.totalAmount).toFixed(2)}
+                      {currencyFormatter(selectedOrder.totalAmount)}
                     </span>
                   </div>
                 </div>

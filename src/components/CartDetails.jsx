@@ -1,4 +1,5 @@
 import useCartStore from "@/services/store/useCartStore";
+import { currencyFormatter } from "@/utils/formatter";
 import { Plus } from "lucide-react";
 import { Minus } from "lucide-react";
 
@@ -31,7 +32,7 @@ const CartDetails = ({ items }) => {
               <p className="font-medium text-zinc-800">{item.title}</p>
               <div className="flex justify-between items-center">
                 <p className="font-semibold mt-1 font-outfit">
-                  ${item.totalPrice}
+                  {currencyFormatter(item.price)}
                 </p>
                 <div className="flex items-center gap-2">
                   <button
@@ -57,7 +58,7 @@ const CartDetails = ({ items }) => {
       <div className="flex justify-between items-center px-1">
         <span className="font-medium text-zinc-800">Total:</span>
         <span className="font-semibold text-blue-600 font-outfit">
-          ${total}
+          {currencyFormatter(total)}
         </span>
       </div>
 

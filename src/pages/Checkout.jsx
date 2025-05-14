@@ -8,6 +8,7 @@ import confetti from "canvas-confetti";
 import { Loader2 } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "sonner";
+import { currencyFormatter } from "@/utils/formatter";
 
 const CheckoutPage = () => {
   const navigate = useNavigate();
@@ -73,7 +74,7 @@ const CheckoutPage = () => {
               <div className="flex justify-between">
                 <p className="text-sm text-zinc-500">Qty: {item.quantity}</p>
                 <div className="text-right text-zinc-600 font-outfit">
-                  $ {item.totalPrice}
+                  {currencyFormatter(item.price)}
                 </div>
               </div>
             </div>
@@ -85,7 +86,7 @@ const CheckoutPage = () => {
       <div className="flex justify-between items-center px-1">
         <p className="text-lg font-medium text-zinc-700">Total</p>
         <p className="text-lg font-semibold text-blue-600 font-outfit">
-          $ {totalPrice.toFixed(2)}
+          {currencyFormatter(totalPrice)}
         </p>
       </div>
 

@@ -1,4 +1,5 @@
 import useProductStore from "@/services/store/useProductsStore";
+import { currencyFormatter } from "@/utils/formatter";
 import updateSearchParams from "@/utils/updateSearchParams";
 import { motion } from "framer-motion";
 import React from "react";
@@ -50,7 +51,7 @@ const ProductCard = React.memo(({ product }) => {
       <CardContent className="py-4 px-4 flex flex-col justify-end">
         <p className="text-xs mb-1 text-zinc-800">Price</p>
         <p className="text-zinc-600 font-medium text-xl font-outfit">
-          $ {product.price}
+          {currencyFormatter(product.price)}
         </p>
       </CardContent>
     </motion.div>
