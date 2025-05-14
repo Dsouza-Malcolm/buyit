@@ -41,7 +41,7 @@ const ProductCard = React.memo(({ product }) => {
           </CardTitle>
           <CardDescription>
             <span className="line-clamp-1">{product.description}</span>{" "}
-            <span className="text-xs text-zinc-950 font-medium hover:underline cursor-pointer">
+            <span className="text-xs font-medium hover:underline cursor-pointer">
               read more...
             </span>
           </CardDescription>
